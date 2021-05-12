@@ -1,5 +1,4 @@
 import os
-from progress.bar import Bar
 from PyPDF2 import PdfFileWriter, PdfFileReader
 
 def instructions():
@@ -55,9 +54,6 @@ def get_needed_pages(pdf):
     else:
         return int(pages), None
 
-
-
-
 def start_extraction():
     pdf_number = get_files_lenght()
     base_name = input('Qual o ano ? Responda apenas com número: ')
@@ -86,23 +82,12 @@ def start_extraction():
             with open ('{}{}'.format(base_name,pdf), 'wb') as outputStream:
                     outputPDF.write(outputStream)
 
-
     return
-
-
-
-
-
-
-
-
-
-
-
-
 
 def main():
     instructions()
     start_extraction()
     return
+
+
 main()
