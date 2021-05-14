@@ -64,6 +64,7 @@ def start_extraction():
 
     for pdf in pdf_list:
         page_start, page_end = get_needed_pages(pdf)
+        page_start = page_start - 1
 
         if page_end == None:
             inputPDF = PdfFileReader(open(pdf,'rb'))
@@ -73,6 +74,7 @@ def start_extraction():
                 outputPDF.write(outputStream)
 
         else:
+            page_end = page_end - 1
             inputPDF = PdfFileReader(open(pdf,'rb'))
             outputPDF = PdfFileWriter()
             while (page_start <= page_end):
