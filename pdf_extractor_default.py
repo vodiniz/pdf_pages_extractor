@@ -1,5 +1,4 @@
 import os
-from progress.bar import Bar
 from PyPDF2 import PdfFileWriter, PdfFileReader
 
 def instructions():
@@ -63,6 +62,8 @@ def start_extraction():
 
     for pdf in pdf_list:
         page_start, page_end = get_needed_pages(pdf)
+        page_start = page_start - 1
+        
 
         if page_end == None:
             base_name = '{}pages_{}.pdf'.format(pdf.strip('.')[0],page_start)
@@ -73,6 +74,7 @@ def start_extraction():
                 outputPDF.write(outputStream)
 
         else:
+            page_end = page_end -1
             base_name = '{}pages_{}-{}.pdf'.format(pdf.strip('.')[0],page_start,page_end)
             inputPDF = PdfFileReader(open(pdf,'rb'))
             outputPDF = PdfFileWriter()
